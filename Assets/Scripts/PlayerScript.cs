@@ -24,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rigidbody;
     float horizontal;
     float vertical;
+    float jump;
 
     float horizontalShoot;
     float verticalShoot;
@@ -34,7 +35,8 @@ public class PlayerScript : MonoBehaviour
     Vector2 lookDirection = new Vector2(1, 0);
     bool lookHeld;
     bool moveHeld;
-
+    bool grounded;
+     
     public int weaponChildrenStart;
 
     int currentWeapon;
@@ -54,8 +56,9 @@ public class PlayerScript : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-     //   horizontalShoot = Input.GetAxis("HorizontalShoot");
-      //  verticalShoot = Input.GetAxis("VerticalShoot");
+        jump = Input.GetAxis("Jump");
+        //   horizontalShoot = Input.GetAxis("HorizontalShoot");
+        //  verticalShoot = Input.GetAxis("VerticalShoot");
 
         Vector2 move = new Vector2(horizontal, vertical);
 
@@ -72,6 +75,12 @@ public class PlayerScript : MonoBehaviour
         {
             moveHeld = false;
         }
+
+       if(jump > .1)
+        {
+            rigidbody.AddForce(new Vector3(0, 100, 0));
+        }
+
 
         /*if (!Mathf.Approximately(shoot.x, 0.0f) || !Mathf.Approximately(shoot.y, 0.0f))
         {
@@ -97,6 +106,7 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 position = rigidbody.position;
+
 
 
         position.x += speed * horizontal * Time.deltaTime;
