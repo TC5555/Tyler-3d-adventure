@@ -115,4 +115,8 @@ public class PlayerScript : MonoBehaviour
         rigidbody.MovePosition(position);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.get)
+    }
 }

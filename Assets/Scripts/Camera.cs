@@ -12,7 +12,6 @@ public class Camera : MonoBehaviour
     void Update()
     {
         MouseAiming();
-        KeyboardMovement();
     }
     void MouseAiming()
     {
@@ -23,12 +22,5 @@ public class Camera : MonoBehaviour
         rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
         // rotate the camera
         transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
-    }
-    void KeyboardMovement()
-    {
-        Vector3 dir = new Vector3(0, 0, 0);
-        dir.x = Input.GetAxis("Horizontal");
-        dir.z = Input.GetAxis("Vertical");
-        transform.Translate(dir * moveSpeed * Time.deltaTime);
     }
 }
