@@ -26,6 +26,10 @@ public class PlayerScript : MonoBehaviour
     float horizontal;
     float vertical;
     float jump;
+    float fire;
+
+    GameObject ActiveWeapon;
+    WeaponScript WeaponScr;
 
     float horizontalShoot;
     float verticalShoot;
@@ -49,14 +53,21 @@ public class PlayerScript : MonoBehaviour
         animator = GetComponent<Animator>();
      
         currentHealth = maxHealth;
-       
+
+        ActiveWeapon = transform.GetChild(weaponChildrenStart).gameObject;
+        ActiveWeapon.SetActive(true);
+        currentWeapon = weaponChildrenStart;
+
+        WeaponScr = ActiveWeapon.GetComponent<WeaponScript>();
+
+
     }
     // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
+        fire = Input.GetAxis("Fire");
         jump = Input.GetAxis("Jump");
 
         Vector2 move = new Vector2(horizontal, vertical);
@@ -74,11 +85,11 @@ public class PlayerScript : MonoBehaviour
 
        if(jump > .1 && grounded)
         {
-            rigidbody.AddForce(new Vector3(0, 80, 0));
+            rigidbody.AddForce(new Vector3(0, 40, 0));
         }
 
 
-     
+        
 
         if (isInvincible)
         {
@@ -104,14 +115,15 @@ public class PlayerScript : MonoBehaviour
 
         transform.GetChild(0).eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
-       
+        ActiveWeapon.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
         Vector3 movement = Vector3.ClampMagnitude(transform.GetChild(0).forward * vertical + transform.GetChild(0).right * horizontal,1);
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 
+        WeaponScr.fire = fire;
 
-       // rigidbody.MovePosition(position);
+
     }
 
     private void OnCollisionEnter(Collision collision)
