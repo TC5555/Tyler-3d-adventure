@@ -7,12 +7,12 @@ public class PlayerScript : MonoBehaviour
     float speed = 7.0f;
 
     public int maxHealth = 10;
- 
 
-   // public ParticleSystem DodgeParticles;
-  //  public ParticleSystem DamageParticles;
+
+    // public ParticleSystem DodgeParticles;
+    //  public ParticleSystem DamageParticles;
     //public ParticleSystem HealParticles;
-    
+
     public float currentHealth;
 
     public float timeInvincible = 2.0f;
@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     float invincibleTimer;
 
     private float rotX;
-   
+
 
     Rigidbody rigidbody;
     float horizontal;
@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     bool lookHeld;
     bool moveHeld;
     bool grounded;
-     
+
     public int weaponChildrenStart;
 
     int currentWeapon;
@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-     
+
         currentHealth = maxHealth;
 
         ActiveWeapon = transform.GetChild(weaponChildrenStart).gameObject;
@@ -83,13 +83,13 @@ public class PlayerScript : MonoBehaviour
             moveHeld = false;
         }
 
-       if(jump > .1 && grounded)
+        if (jump > .1 && grounded)
         {
-            rigidbody.AddForce(new Vector3(0, 40, 0));
+            rigidbody.AddForce(new Vector3(0, 80, 0));
         }
 
 
-        
+
 
         if (isInvincible)
         {
@@ -103,13 +103,13 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 position = rigidbody.position;
 
-    
+
         float y = Input.GetAxis("Mouse X") * 4;
         rotX += Input.GetAxis("Mouse Y") * 4;
 
         rotX = Mathf.Clamp(rotX, -90, 90);
 
-   
+
 
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + y, 0);
 
@@ -117,7 +117,7 @@ public class PlayerScript : MonoBehaviour
 
         ActiveWeapon.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
-        Vector3 movement = Vector3.ClampMagnitude(transform.GetChild(0).forward * vertical + transform.GetChild(0).right * horizontal,1);
+        Vector3 movement = Vector3.ClampMagnitude(transform.GetChild(0).forward * vertical + transform.GetChild(0).right * horizontal, 1);
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
 
@@ -128,7 +128,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Terrain")
+        if (collision.gameObject.tag == "Terrain")
         {
             grounded = true;
         }
@@ -139,6 +139,12 @@ public class PlayerScript : MonoBehaviour
         {
             grounded = false;
         }
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        currentHealth += amount;
+
     }
 
 }

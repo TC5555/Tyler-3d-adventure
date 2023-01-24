@@ -21,6 +21,8 @@ public class HitscanWeapon : WeaponScript
 
             Vector3 shootAngle = transform.forward;
 
+            shootAngle += new Vector3(Random.Range(-horizontalSpread * Mathf.PI / 360f, horizontalSpread * Mathf.PI / 360f), Random.Range(-verticleSpread * Mathf.PI / 360f, verticleSpread * Mathf.PI / 360f),0);
+
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             Physics.Raycast(ray, out hit, 80f, LayerMask.GetMask("Enemy"));
