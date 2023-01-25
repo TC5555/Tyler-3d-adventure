@@ -14,11 +14,8 @@ public class ProjectileWeapon : WeaponScript
 
             Vector3 shootAngle = transform.forward;
 
-            Debug.Log(shootAngle);
-
             shootAngle += new Vector3(Random.Range(-horizontalSpread * Mathf.PI / 360f, horizontalSpread * Mathf.PI / 360f), Random.Range(-verticleSpread * Mathf.PI / 360f, verticleSpread * Mathf.PI / 360f), 0);
 
-            Debug.Log(shootAngle);
 
             GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(shootAngle));
             Projectile projectile = projectileObject.GetComponent<Projectile>();

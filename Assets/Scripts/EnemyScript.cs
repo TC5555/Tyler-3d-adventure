@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(float amount)
     {
         currentHealth += amount;
         if (currentHealth == 0)

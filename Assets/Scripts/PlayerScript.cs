@@ -49,6 +49,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
@@ -141,7 +143,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(float amount)
     {
         currentHealth += amount;
 
