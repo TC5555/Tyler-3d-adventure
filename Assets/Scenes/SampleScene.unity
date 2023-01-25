@@ -518,7 +518,7 @@ MonoBehaviour:
   verticleSpread: 0
   horizontalSpread: 0
   fire: 0
-  projectilePrefab: {fileID: 2751710748530718744, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
+  projectilePrefab: {fileID: 8746019912436012130, guid: 15d588356419345e092ca2f24932b7c3, type: 3}
 --- !u!1 &1674754397
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 1904081601}
   m_Layer: 6
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -795,7 +795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904081600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 212.51448, y: 2.4335737, z: 316.68}
+  m_LocalPosition: {x: 212.51448, y: 3.9, z: 316.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 2072799884}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -933,71 +933,6 @@ MonoBehaviour:
   currentHealth: 0
   timeInvincible: 2
   weaponChildrenStart: 1
---- !u!1001 &7335060582938891681
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 143.85269
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 71.525826
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 484.549
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 367993111036228354, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2751710748530718744, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: m_Name
-      value: projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 5632237636842134149, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: force
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5632237636842134149, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
-      propertyPath: distance
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
 --- !u!1001 &8621539547456752589
 PrefabInstance:
   m_ObjectHideFlags: 0

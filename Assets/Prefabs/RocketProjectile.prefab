@@ -131,4 +131,4 @@ MonoBehaviour:
   contactDamage: -1
   radius: 7
   Knockback: 400
-  vertKnockback: 0
+  vertKnockback: 40
