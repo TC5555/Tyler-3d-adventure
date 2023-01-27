@@ -8,10 +8,11 @@ public class ExplosiveProjectile : Projectile
     public float radius;
     public float Knockback;
     public float vertKnockback;
-    
+    public ParticleSystem ExplosionEffects;
 
-    void OnCollisionEnter(Collision other)
+    IEnumerator OnCollisionEnter(Collision other)
     {
+   
         PlayerScript p = other.collider.GetComponent<PlayerScript>();
         if (p != null)
         {
@@ -27,7 +28,7 @@ public class ExplosiveProjectile : Projectile
             }
         }
 
-        Collider[] explosion = Physics.OverlapSphere(transform.position, radius);
+        Collider[] explosion = Physics.OverlapSphere(rigidbody.position, radius);
 
         foreach (Collider hit in explosion)
         {
@@ -44,6 +45,14 @@ public class ExplosiveProjectile : Projectile
 
             }
         }
+
+        rigidbody.Sleep();
+
+        gameObject.GetComponent<Renderer>().enabled = false;
+        ExplosionEffects.Play();
+
+
+        yield return new WaitForSeconds(1f);
 
         Destroy(gameObject);
     }

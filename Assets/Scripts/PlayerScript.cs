@@ -49,7 +49,8 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();

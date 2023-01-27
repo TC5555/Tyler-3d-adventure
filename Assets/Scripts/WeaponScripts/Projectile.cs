@@ -30,7 +30,7 @@ public abstract class Projectile : MonoBehaviour
         if (transform.position.x > origin.x + distance || transform.position.x < origin.x - distance || transform.position.y > origin.y + distance || transform.position.y < origin.y - distance)
         {
 
-            Destroy(gameObject);
+         //   Destroy(gameObject);
         }
     }
 }
