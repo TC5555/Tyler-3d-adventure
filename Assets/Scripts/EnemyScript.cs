@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour
     public void ChangeHealth(float amount)
     {
         currentHealth += amount;
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

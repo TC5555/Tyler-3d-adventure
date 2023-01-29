@@ -9,6 +9,8 @@ public class ExplosiveProjectile : Projectile
     public float Knockback;
     public float vertKnockback;
     public ParticleSystem ExplosionEffects;
+    public float falloff;
+
 
     IEnumerator OnCollisionEnter(Collision other)
     {
@@ -35,7 +37,11 @@ public class ExplosiveProjectile : Projectile
             if (hit.CompareTag("Enemy"))
             {
                 Debug.Log("boom");
-                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount);
+                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount * (falloff * (radius -(hit.ClosestPoint(rigidbody.position)-rigidbody.position).magnitude)/ radius));
+                //blast damage calculation is blastdamage - MaxFallout * (radius - distance)/radius.
+                //4 meters away from a 5 meter explosion is 4/5ths damage. 
+                Debug.Log((radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius*falloff);
+                
                 hit.gameObject.GetComponent<Rigidbody>().AddExplosionForce(Knockback, rigidbody.position, radius, vertKnockback);
             }
             else if (hit.CompareTag("Player"))

@@ -127,4 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: -1
   force: 1000
-  distance: 5
+  distance: 100
