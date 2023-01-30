@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveProjectile : Projectile
+public abstract class ExplosiveProjectile : Projectile
 {
     public float contactDamage;
     public float radius;
@@ -12,23 +12,9 @@ public class ExplosiveProjectile : Projectile
     public float falloff;
 
 
-    IEnumerator OnCollisionEnter(Collision other)
+    protected IEnumerator Explode()
     {
-   
-        PlayerScript p = other.collider.GetComponent<PlayerScript>();
-        if (p != null)
-        {
-            p.ChangeHealth(contactDamage);
-        
-        }
-        else
-        {
-            EnemyScript e = other.collider.GetComponent<EnemyScript>();
-            if (e != null)
-            {
-                e.ChangeHealth(contactDamage);
-            }
-        }
+        Debug.Log("Boom!");
 
         Collider[] explosion = Physics.OverlapSphere(rigidbody.position, radius);
 
@@ -37,11 +23,11 @@ public class ExplosiveProjectile : Projectile
             if (hit.CompareTag("Enemy"))
             {
                 Debug.Log("boom");
-                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount * (falloff * (radius -(hit.ClosestPoint(rigidbody.position)-rigidbody.position).magnitude)/ radius));
+                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount * (falloff * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius));
                 //blast damage calculation is blastdamage - MaxFallout * (radius - distance)/radius.
                 //4 meters away from a 5 meter explosion is 4/5ths damage. 
-                Debug.Log((radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius*falloff);
-                
+                Debug.Log((radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius * falloff);
+
                 hit.gameObject.GetComponent<Rigidbody>().AddExplosionForce(Knockback, rigidbody.position, radius, vertKnockback);
             }
             else if (hit.CompareTag("Player"))
