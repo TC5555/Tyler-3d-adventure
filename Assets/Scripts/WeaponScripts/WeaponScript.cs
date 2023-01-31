@@ -4,16 +4,16 @@ using UnityEngine;
 
 public abstract class WeaponScript : MonoBehaviour
 {
-    Vector3 direction;
-    bool canShoot;
-    float timer;
-    public float shootTime;
     public int shootMulti;
 
     public float verticleSpread;
     public float horizontalSpread;
 
     public float fire;
+    public int ammoMaximum;
+    protected int ammoCount;
+    public float reloadTime;
+    public float roundsPerMinute;
 
     // Start is called before the first frame update
     void Start()
@@ -21,27 +21,38 @@ public abstract class WeaponScript : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Update()
+    IEnumerator Update()
     {
 
-        if (!canShoot)
+        if (!Mathf.Approximately(Input.GetAxis("reload"), 0.0f))
         {
-            timer -= Time.deltaTime;
-
-            if (timer < 0)
+            Reload();
+        }
+        else if (Mathf.Approximately(fire, 0.0f))
+        {
+            if(ammoCount == 0)
             {
-                canShoot = true;
+                Reload();
             }
-        }
-        else if (fire > .1)
-        {
-            canShoot = false;
-            timer = shootTime;
+            else { 
+            ammoCount--;
+                Debug.Log(ammoCount);
+                Launch();
 
-            Launch();
+            yield return new WaitForSeconds(roundsPerMinute/60);
+                
+            }
+            }
 
-        }
     }
+
+    IEnumerator Reload()
+    {
+        Debug.Log("Reload");
+        ammoCount = ammoMaximum;
+        yield return new WaitForSeconds(reloadTime);
+    }
+
 
     public abstract void Launch();
 }

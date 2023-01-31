@@ -86,7 +86,7 @@ public class PlayerScript : MonoBehaviour
             moveHeld = false;
         }
 
-        if (jump > .1 && grounded)
+        if (!Mathf.Approximately(jump, 0.0f) && grounded)
         {
             rigidbody.AddForce(new Vector3(0, 80, 0));
         }

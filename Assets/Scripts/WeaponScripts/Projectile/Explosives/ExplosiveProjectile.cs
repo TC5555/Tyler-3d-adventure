@@ -10,23 +10,35 @@ public abstract class ExplosiveProjectile : Projectile
     public float vertKnockback;
     public ParticleSystem ExplosionEffects;
     public float falloff;
+    protected bool exploded = false;
+
+
+    private void Update()
+    {
+        Debug.Log(Input.GetAxis("Aim"));
+        if (!Mathf.Approximately(Input.GetAxis("Aim"), 0.0f))
+        {
+            if (!exploded)
+            {
+                StartCoroutine(Explode());
+            }
+        }
+    }
 
 
     protected IEnumerator Explode()
     {
-        Debug.Log("Boom!");
-
+        exploded = true;
         Collider[] explosion = Physics.OverlapSphere(rigidbody.position, radius);
 
         foreach (Collider hit in explosion)
         {
             if (hit.CompareTag("Enemy"))
             {
-                Debug.Log("boom");
-                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount * (falloff * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius));
+                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount * (falloff + (1f-falloff) * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius));
                 //blast damage calculation is blastdamage - MaxFallout * (radius - distance)/radius.
                 //4 meters away from a 5 meter explosion is 4/5ths damage. 
-                Debug.Log((radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius * falloff);
+                Debug.Log((falloff + (1f - falloff) * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius));
 
                 hit.gameObject.GetComponent<Rigidbody>().AddExplosionForce(Knockback, rigidbody.position, radius, vertKnockback);
             }

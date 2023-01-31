@@ -6,7 +6,6 @@ public class TimedBouncyExplosiveProjectile : ExplosiveProjectile
 {
     public float timer;
 
-    bool exploded = false;
 
     IEnumerator Start()
     {
@@ -23,8 +22,7 @@ public class TimedBouncyExplosiveProjectile : ExplosiveProjectile
 
         PlayerScript p = other.collider.GetComponent<PlayerScript>();
         if (p != null)
-        {  
-            exploded = true;
+        {         
             p.ChangeHealth(contactDamage);
             StartCoroutine(Explode());
         }
@@ -33,8 +31,6 @@ public class TimedBouncyExplosiveProjectile : ExplosiveProjectile
             EnemyScript e = other.collider.GetComponent<EnemyScript>();
             if (e != null)
             {
-                
-                exploded = true;
                 e.ChangeHealth(contactDamage);
                 StartCoroutine(Explode());
             }

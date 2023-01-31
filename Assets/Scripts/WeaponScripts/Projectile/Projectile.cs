@@ -15,6 +15,7 @@ public abstract class Projectile : MonoBehaviour
     {
 
         rigidbody = GetComponent<Rigidbody>();
+        
     }
 
     public void Launch(Vector3 direction, Vector3 origin)
