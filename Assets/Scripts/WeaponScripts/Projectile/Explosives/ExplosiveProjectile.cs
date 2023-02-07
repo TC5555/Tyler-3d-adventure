@@ -17,7 +17,7 @@ public abstract class ExplosiveProjectile : Projectile
     {
         if (!Mathf.Approximately(Input.GetAxis("Aim"), 0.0f))
         {
-            if (!exploded && GameObject.FindGameObjectsWithTag(LayerMask.NameToLayer("PlayerProjectile"))))
+            if (!exploded && GameObject.FindGameObjectsWithTag("PlayerProjectile").Length == 1) 
             {
                 StartCoroutine(Explode());
             }

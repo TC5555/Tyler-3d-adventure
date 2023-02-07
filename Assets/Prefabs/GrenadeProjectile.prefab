@@ -4997,4 +4997,4 @@ MonoBehaviour:
   vertKnockback: 0.4
   ExplosionEffects: {fileID: 6037704850099001480}
   falloff: 0.4
-  timer: 9
+  timer: 2

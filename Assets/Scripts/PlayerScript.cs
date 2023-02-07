@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour
 
     private float rotX;
 
+    public float jumpForce;
 
     Rigidbody rigidbody;
     float horizontal;
@@ -88,7 +89,7 @@ public class PlayerScript : MonoBehaviour
 
         if (!Mathf.Approximately(jump, 0.0f) && grounded)
         {
-            rigidbody.AddForce(new Vector3(0, 80, 0));
+            rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
 
 

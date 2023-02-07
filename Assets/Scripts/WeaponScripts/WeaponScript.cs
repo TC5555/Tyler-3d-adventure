@@ -43,7 +43,7 @@ public abstract class WeaponScript : MonoBehaviour
                     Debug.Log(ammoCount);
                     Launch();
 
-                    yield return new WaitForSeconds(roundsPerMinute / 60);
+                    yield return new WaitForSeconds(1/(roundsPerMinute / 60));
 
                 }
             }

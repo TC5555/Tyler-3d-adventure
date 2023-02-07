@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class EnemyScript : MonoBehaviour
 
     protected Color32 colorVal = new Color32(255, 255, 255, 255);
 
+    NavMeshAgent agent;
+
     protected new Rigidbody2D rigidbody2D;
     public bool alive = true;
     public GameObject pickupPrefab;
@@ -21,6 +24,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
@@ -28,7 +32,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        agent.destination = GameObject.Find("Player").transform.position;
     }
 
 
