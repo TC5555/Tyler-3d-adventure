@@ -18,39 +18,45 @@ public abstract class WeaponScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
+       StartCoroutine(Shoot());
     }
 
-    IEnumerator Update()
+    IEnumerator Shoot()
     {
-
-        if (!Mathf.Approximately(Input.GetAxis("reload"), 0.0f))
+        while (true)
         {
-            Reload();
-        }
-        else if (Mathf.Approximately(fire, 0.0f))
-        {
-            if(ammoCount == 0)
+            if (!Mathf.Approximately(Input.GetAxis("Reload"), 0.0f) && ammoCount != ammoMaximum)
             {
+                yield return new WaitForSeconds(reloadTime);
                 Reload();
             }
-            else { 
-            ammoCount--;
-                Debug.Log(ammoCount);
-                Launch();
+            else if (!Mathf.Approximately(fire, 0.0f))
+            {
+                if (ammoCount == 0)
+                {
+                    yield return new WaitForSeconds(reloadTime);
+                    Reload();
+                }
+                else
+                {
+                    ammoCount--;
+                    Debug.Log(ammoCount);
+                    Launch();
 
-            yield return new WaitForSeconds(roundsPerMinute/60);
-                
+                    yield return new WaitForSeconds(roundsPerMinute / 60);
+
+                }
             }
-            }
+
+            yield return new WaitForEndOfFrame();
+        }
 
     }
 
-    IEnumerator Reload()
+    void Reload()
     {
         Debug.Log("Reload");
         ammoCount = ammoMaximum;
-        yield return new WaitForSeconds(reloadTime);
     }
 
 

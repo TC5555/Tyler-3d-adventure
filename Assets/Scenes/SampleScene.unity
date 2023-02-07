@@ -518,7 +518,7 @@ MonoBehaviour:
   horizontalSpread: 0
   fire: 0
   ammoMaximum: 4
-  reloadTime: 1.5
+  reloadTime: 1
   roundsPerMinute: 60
   projectilePrefab: {fileID: 8746019912436012130, guid: 15d588356419345e092ca2f24932b7c3, type: 3}
 --- !u!1 &1674754397

@@ -4878,7 +4878,7 @@ GameObject:
   - component: {fileID: 6441096428377005342}
   m_Layer: 7
   m_Name: GrenadeProjectile
-  m_TagString: PlayerSide
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

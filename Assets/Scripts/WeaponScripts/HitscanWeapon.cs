@@ -5,15 +5,6 @@ using UnityEngine;
 public class HitscanWeapon : WeaponScript
 {
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public override void Launch()
     {
         for (int i = shootMulti; i > 0; i--)
