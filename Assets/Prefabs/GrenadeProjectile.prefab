@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2248832045851667931}
   - component: {fileID: 6037704850099001480}
   - component: {fileID: 4929912798214308594}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 1803445328828286086}
   - component: {fileID: 3992913013635496008}
   - component: {fileID: 6441096428377005342}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: GrenadeProjectile
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}

@@ -20,21 +20,14 @@ public class TimedBouncyExplosiveProjectile : ExplosiveProjectile
     void OnCollisionEnter(Collision other)
     {
 
-        PlayerScript p = other.collider.GetComponent<PlayerScript>();
-        if (p != null)
-        {         
-            p.ChangeHealth(contactDamage);
-            StartCoroutine(Explode());
-        }
-        else
-        {
+        
             EnemyScript e = other.collider.GetComponent<EnemyScript>();
             if (e != null)
             {
                 e.ChangeHealth(contactDamage);
                 StartCoroutine(Explode());
             }
-        }
+        
 
        
     }

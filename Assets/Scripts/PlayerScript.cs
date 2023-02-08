@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
 
     private float rotX;
 
-    public float jumpForce;
+    public float jumpHeight;
 
     Rigidbody rigidbody;
     float horizontal;
@@ -76,7 +76,7 @@ public class PlayerScript : MonoBehaviour
 
         Vector2 move = new Vector2(horizontal, vertical);
 
-        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.5f))
         {
             moveHeld = true;
             moveDirection.Set(move.x, move.y);
@@ -89,7 +89,9 @@ public class PlayerScript : MonoBehaviour
 
         if (!Mathf.Approximately(jump, 0.0f) && grounded)
         {
-            rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            Debug.Log("jump");
+            rigidbody.AddForce(new Vector3(0, rigidbody.mass * Mathf.Sqrt(2*Physics.gravity.magnitude*jumpHeight), 0), ForceMode.Impulse);
+            grounded = false;
         }
 
 
@@ -130,10 +132,11 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Terrain")
+    private void OnCollisionStay(Collision collision)
+    {      
+        if (!grounded && Mathf.Approximately(rigidbody.velocity.y, 0.0f) && collision.gameObject.tag == "Terrain")
         {
+           // Debug.Log(rigidbody.velocity.y);
             grounded = true;
         }
     }

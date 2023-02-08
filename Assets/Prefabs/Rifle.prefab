@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8621539547857205806}
   - component: {fileID: 8621539547857205801}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5adf0d9e10ad7d74cbd46c52bc886400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootTime: 1
   shootMulti: 1
   verticleSpread: 0.3
   horizontalSpread: 0.3
   fire: 0
+  ammoMaximum: 0
+  reloadTime: 0
+  roundsPerMinute: 0
