@@ -25,6 +25,7 @@ public abstract class WeaponScript : MonoBehaviour
     {
         while (true)
         {
+            fire = Input.GetAxis("Fire");
             if (!Mathf.Approximately(Input.GetAxis("Reload"), 0.0f) && ammoCount != ammoMaximum)
             {
                 yield return new WaitForSeconds(reloadTime);

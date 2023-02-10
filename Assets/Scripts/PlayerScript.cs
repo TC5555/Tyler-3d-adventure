@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     float speed = 7.0f;
 
-    public int maxHealth = 10;
+    public int maxHealth = 100;
 
 
     // public ParticleSystem DodgeParticles;
@@ -26,8 +26,14 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rigidbody;
     float horizontal;
     float vertical;
-    float jump;
+    bool jump;
     float fire;
+
+    bool dodge;
+    bool airDodge;
+    float dodgeTimer = 0;
+    public float dodgeSpeed;
+    public float dodgeCooldown;
 
     GameObject ActiveWeapon;
     WeaponScript WeaponScr;
@@ -37,11 +43,12 @@ public class PlayerScript : MonoBehaviour
 
     Animator animator;
 
-    Vector2 moveDirection = new Vector2(1, 0);
-    Vector2 lookDirection = new Vector2(1, 0);
+    Vector3 moveDirection;
+
     bool lookHeld;
     bool moveHeld;
     bool grounded;
+    bool doubleJump;
 
     public int weaponChildrenStart;
 
@@ -71,30 +78,67 @@ public class PlayerScript : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        moveDirection = Vector3.ClampMagnitude(transform.GetChild(0).forward * vertical + transform.GetChild(0).right * horizontal, 1);
+
+
         fire = Input.GetAxis("Fire");
-        jump = Input.GetAxis("Jump");
+        jump = Input.GetButtonDown("Jump");
+        dodge = Input.GetButtonDown("Dodge");
 
         Vector2 move = new Vector2(horizontal, vertical);
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.5f))
         {
             moveHeld = true;
-            moveDirection.Set(move.x, move.y);
-            moveDirection.Normalize();
         }
         else
         {
             moveHeld = false;
         }
 
-        if (!Mathf.Approximately(jump, 0.0f) && grounded)
+        if (jump)
         {
-            Debug.Log("jump");
-            rigidbody.AddForce(new Vector3(0, rigidbody.mass * Mathf.Sqrt(2*Physics.gravity.magnitude*jumpHeight), 0), ForceMode.Impulse);
-            grounded = false;
+            if (grounded)
+            {
+                Debug.Log("jump");
+                rigidbody.AddForce(new Vector3(0, rigidbody.mass * Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight), 0), ForceMode.Impulse);
+                grounded = false;
+            }
+            else if (doubleJump)
+            {
+                Debug.Log("doubleJump");
+                rigidbody.AddForce(new Vector3(0, rigidbody.mass * Mathf.Sqrt(2 * Physics.gravity.magnitude * jumpHeight), 0), ForceMode.Impulse);
+                doubleJump = false;
+            }
         }
-
-
+        if (dodgeTimer < 0)
+        {
+            if (dodge)
+            {
+                if (grounded)
+                {
+                    Debug.Log("dodge");
+                    rigidbody.AddForce(moveDirection * dodgeSpeed, ForceMode.Impulse);
+                    dodgeTimer = dodgeCooldown;
+                    rigidbody.drag = 0;
+                }
+                else if (airDodge)
+                {
+                    Debug.Log("airDodge");
+                    rigidbody.AddForce(moveDirection * dodgeSpeed * 3/4, ForceMode.Impulse);
+                    airDodge = false;
+                    dodgeTimer = dodgeCooldown;
+                    rigidbody.drag = 0;
+                }
+            }
+            else
+            {
+                rigidbody.drag = .1f;
+            }
+        }
+        dodgeTimer -= Time.deltaTime;
+      
 
 
         if (isInvincible)
@@ -123,13 +167,9 @@ public class PlayerScript : MonoBehaviour
 
         ActiveWeapon.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
-        Vector3 movement = Vector3.ClampMagnitude(transform.GetChild(0).forward * vertical + transform.GetChild(0).right * horizontal, 1);
+        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
 
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
-
-        WeaponScr.fire = fire;
-
-
+       
     }
 
     private void OnCollisionStay(Collision collision)
@@ -138,6 +178,8 @@ public class PlayerScript : MonoBehaviour
         {
            // Debug.Log(rigidbody.velocity.y);
             grounded = true;
+            doubleJump = true;
+            airDodge = true;
         }
     }
     private void OnCollisionExit(Collision collision)
