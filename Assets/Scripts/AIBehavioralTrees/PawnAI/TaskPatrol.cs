@@ -17,11 +17,8 @@ public class TaskPatrol : Node
     private float _waitCooldown = 1f;
     private bool _waiting = false;
 
-    private NavMeshAgent _agent;
-
-    public TaskPatrol(Transform transform, Transform[] waypoints, NavMeshAgent agent)
+    public TaskPatrol(Transform transform, Transform[] waypoints)
     {
-        _agent = agent;
         _transform = transform;
         _waypoints = waypoints;
     }
@@ -31,6 +28,7 @@ public class TaskPatrol : Node
     {
         if (_waiting)
         {
+            Debug.Log(_waitTimer);
             _waitTimer -= Time.deltaTime;
             if(_waitTimer <= 0)
             {
@@ -40,10 +38,9 @@ public class TaskPatrol : Node
         else
         {
             Transform wp = _waypoints[_currentWaypointIndex];
-
-            if (Mathf.Approximately(Vector3.Distance(_transform.position, wp.position), 0.0f))
+            Debug.Log(Vector3.Distance(_transform.position, wp.position));
+            if (Vector3.Distance(_transform.position, wp.position) < 2f)
             {
-                _transform.position = wp.position;
                 _waitTimer = _waitCooldown;
                 _waiting = true;
 
@@ -51,8 +48,8 @@ public class TaskPatrol : Node
             }
             else
             {
-                _agent.destination = wp.position;
-                _transform.LookAt(wp.position);
+                PawnBT._agent.destination = wp.position;
+                _transform.LookAt(new Vector3(_transform.position.x, wp.position.y, _transform.position.x));
             }
 
         }
