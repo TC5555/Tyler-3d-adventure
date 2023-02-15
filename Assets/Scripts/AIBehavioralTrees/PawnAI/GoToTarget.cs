@@ -17,7 +17,7 @@ public class GoToTarget : Node
     {
         Transform target = (Transform)GetData("target");
 
-        if (Vector3.Distance(_transform.position, target.position) > 0.01f)
+        if (Vector3.Distance(_transform.position, target.position) > 1f)
         {
             PawnBT._agent.destination = target.position;
             _transform.LookAt(new Vector3(_transform.position.x, target.position.y, _transform.position.x));

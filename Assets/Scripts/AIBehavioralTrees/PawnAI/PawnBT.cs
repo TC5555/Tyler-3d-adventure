@@ -10,7 +10,9 @@ public class PawnBT : Tree
 
     public static NavMeshAgent _agent;
 
-    public static float scanRange;
+    public UnityEngine.GameObject _projectile;
+
+    public static float scanRange = 6f;
 
     private void Awake()
     {
@@ -22,6 +24,8 @@ public class PawnBT : Tree
 
         Node root = new Selector(new List<Node>
         {
+            new Attack(transform,_projectile),
+
             new Sequence(new List<Node>
             {
                 new Scan(transform),

@@ -1141,6 +1141,7 @@ MonoBehaviour:
   - {fileID: 2038848979}
   - {fileID: 2037025416}
   - {fileID: 964661352}
+  _projectile: {fileID: 2751710748530718744, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
 --- !u!1 &2037025415
 GameObject:
   m_ObjectHideFlags: 0

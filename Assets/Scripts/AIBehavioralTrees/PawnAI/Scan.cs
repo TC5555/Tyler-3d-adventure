@@ -18,8 +18,8 @@ public class Scan : Node
         object t = GetData("target");
         if (t == null)
         {
+            
             Collider[] colliders = Physics.OverlapSphere(_transform.position, PawnBT.scanRange, LayerMask.GetMask("Player"));
-
             if (colliders.Length > 0)
             {
                 parent.parent.SetData("target", colliders[0].transform);

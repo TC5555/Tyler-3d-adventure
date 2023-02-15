@@ -174,7 +174,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {      
-        if (!grounded && Mathf.Approximately(rigidbody.velocity.y, 0.0f) && collision.gameObject.tag == "Terrain")
+        if (!grounded && rigidbody.velocity.y < 0.5f && collision.gameObject.tag == "Terrain")
         {
            // Debug.Log(rigidbody.velocity.y);
             grounded = true;
