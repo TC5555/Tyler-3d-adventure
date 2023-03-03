@@ -27,30 +27,33 @@ public class TaskPatrol : Node
     public override NodeState Evaluate()
     {
         Debug.Log("Patrol");
-        if (_waiting)
-        {    
-            _waitTimer -= Time.deltaTime;
-            if(_waitTimer <= 0)
+       
+            if (_waiting)
             {
-                _waiting = false;
-            }
-        }
-        else
-        {
-            Transform wp = _waypoints[_currentWaypointIndex];
-            if (Vector3.Distance(_transform.position, wp.position) < 2f)
-            {
-                _waitTimer = _waitCooldown;
-                _waiting = true;
-
-                _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+                _waitTimer -= Time.deltaTime;
+                if (_waitTimer <= 0)
+                {
+                    _waiting = false;
+                }
             }
             else
-            {
-                PawnBT._agent.destination = wp.position;
-                _transform.LookAt(new Vector3(_transform.position.x, wp.position.y, _transform.position.x));
-            }
+            { 
+                //if(System.Array.Exists(_waypoints, x => x == PawnBT._agent.destination))
+             
+                Transform wp = _waypoints[_currentWaypointIndex];
+                if (Vector3.Distance(_transform.position, wp.position) < 2f)
+                {
+                    _waitTimer = _waitCooldown;
+                    _waiting = true;
 
+                    _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+                }
+                else
+                {
+                    PawnBT._agent.destination = wp.position;
+                    _transform.LookAt(new Vector3(_transform.position.x, wp.position.y, _transform.position.x));
+                }
+            
         }
         state = NodeState.RUNNING;
         return state;
