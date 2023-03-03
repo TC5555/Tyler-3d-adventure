@@ -26,9 +26,9 @@ public class TaskPatrol : Node
 
     public override NodeState Evaluate()
     {
+        Debug.Log("Patrol");
         if (_waiting)
-        {
-            Debug.Log(_waitTimer);
+        {    
             _waitTimer -= Time.deltaTime;
             if(_waitTimer <= 0)
             {

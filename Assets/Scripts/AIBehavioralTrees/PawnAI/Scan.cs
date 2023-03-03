@@ -7,21 +7,27 @@ using BehaviorTree;
 public class Scan : Node
 {
     private Transform _transform;
+    private float _deAggroTime, _deAggroRange, _scanRange;
 
-    public Scan(Transform transform)
+
+    public Scan(Transform transform,float deAggroTime,float deAggroRange, float scanRange)
     {
         _transform = transform;
+        _deAggroTime = deAggroTime;
+        _deAggroRange = deAggroRange;
+        _scanRange = scanRange;
     }
 
     public override NodeState Evaluate()
     {
-        object t = GetData("target");
+        Debug.Log("Scan");
+        Transform t = (Transform)GetData("target");
         if (t == null)
         {
-            
-            Collider[] colliders = Physics.OverlapSphere(_transform.position, PawnBT.scanRange, LayerMask.GetMask("Player"));
+            Collider[] colliders = Physics.OverlapSphere(_transform.position, _scanRange, LayerMask.GetMask("Player"));
             if (colliders.Length > 0)
             {
+                _transform.GetChild(0).GetComponent<AIWeapon>().fire = true;
                 parent.parent.SetData("target", colliders[0].transform);
                 state = NodeState.SUCCESS;
                 return state;
@@ -31,6 +37,16 @@ public class Scan : Node
             state = NodeState.FAILURE;
             return state;
         }
+        else if (Physics.Linecast(_transform.position, t.position, LayerMask.GetMask("Terrain")) || Vector3.Distance(_transform.position, t.position) > _deAggroRange)
+        {
+            Debug.Log("IGNORE");
+            _transform.GetChild(0).GetComponent<AIWeapon>().fire = false;
+            parent.parent.ClearData("target");
+            state = NodeState.FAILURE;
+            return state;
+        }
+
+        _transform.GetChild(0).LookAt(t);
 
         state = NodeState.SUCCESS;
         return state;

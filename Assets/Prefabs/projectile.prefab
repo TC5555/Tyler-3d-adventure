@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5068536834533107964}
   - component: {fileID: -1713129662018300878}
   - component: {fileID: 6113616069665183334}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: projectile
-  m_TagString: PlayerProjectile
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,5 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: -1
-  force: 10
+  force: 1000
   distance: 100

@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 273705153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Evironment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 591285412}
   - component: {fileID: 591285411}
   - component: {fileID: 591285414}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlaneTest
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -757,6 +757,58 @@ MonoBehaviour:
   reloadTime: 1
   roundsPerMinute: 60
   projectilePrefab: {fileID: 8746019912436012130, guid: 15d588356419345e092ca2f24932b7c3, type: 3}
+--- !u!1 &1378108029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378108030}
+  - component: {fileID: 1378108031}
+  m_Layer: 6
+  m_Name: EnemyWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1378108030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378108029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1904081606}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378108031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378108029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6abeab0d1c6264d1dafd42e9680a9eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootMulti: 1
+  verticleSpread: 0
+  horizontalSpread: 0
+  direction: {x: 0, y: 0, z: 0}
+  fire: 0
+  ammoMaximum: 12
+  reloadTime: 1
+  roundsPerMinute: 500
+  projectilePrefab: {fileID: 2751710748530718744, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
 --- !u!1 &1674754397
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +895,7 @@ GameObject:
   - component: {fileID: 1697339926}
   - component: {fileID: 1697339925}
   - component: {fileID: 1697339924}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -947,7 +999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1794390646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1150,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 221, y: 6.9, z: 317}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1378108030}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1142,6 +1195,9 @@ MonoBehaviour:
   - {fileID: 2037025416}
   - {fileID: 964661352}
   _projectile: {fileID: 2751710748530718744, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
+  deAggroTime: 5
+  deAggroRange: 100
+  scanRange: 10
 --- !u!1 &2037025415
 GameObject:
   m_ObjectHideFlags: 0

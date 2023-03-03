@@ -12,11 +12,13 @@ public class PawnBT : Tree
 
     public UnityEngine.GameObject _projectile;
 
-    public static float scanRange = 6f;
+    public float deAggroTime, deAggroRange, scanRange;
+
+    private int currentWeapon = 0;
 
     private void Awake()
-    {
-        _agent = GetComponent<NavMeshAgent>();
+    {       
+        _agent = GetComponent<NavMeshAgent>();   
     }
 
     protected override Node SetupTree()
@@ -24,15 +26,20 @@ public class PawnBT : Tree
 
         Node root = new Selector(new List<Node>
         {
-            new Attack(transform,_projectile),
-
+            /*new Selector(new List<Node>
+            {
+                    new Attack(transform,_projectile),
+                }),*/
+             
             new Sequence(new List<Node>
             {
-                new Scan(transform),
+                new Scan(transform,deAggroTime,deAggroRange,scanRange),
                 new GoToTarget(transform),
+
             }),
+
             new TaskPatrol(transform, waypoints),
-        });
+        }); ;
 
         return root;
 
