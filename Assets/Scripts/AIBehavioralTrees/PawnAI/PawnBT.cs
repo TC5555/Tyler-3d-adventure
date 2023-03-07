@@ -10,6 +10,8 @@ public class PawnBT : Tree
 
     public static NavMeshAgent _agent;
 
+    public static bool _Patrolling = true;
+
     public UnityEngine.GameObject _projectile;
 
     public float deAggroTime, deAggroRange, scanRange;
@@ -18,7 +20,7 @@ public class PawnBT : Tree
 
     private void Awake()
     {       
-        _agent = GetComponent<NavMeshAgent>();   
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     protected override Node SetupTree()

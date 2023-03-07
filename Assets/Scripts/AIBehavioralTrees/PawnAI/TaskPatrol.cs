@@ -27,7 +27,16 @@ public class TaskPatrol : Node
     public override NodeState Evaluate()
     {
         Debug.Log("Patrol");
-       
+
+        if (!PawnBT._Patrolling)
+        {
+           if(Vector3.Distance(_transform.position, PawnBT._agent.destination) < 2f){
+                PawnBT._Patrolling = true;
+            }
+            state = NodeState.FAILURE;
+            return state;
+        }
+        
             if (_waiting)
             {
                 _waitTimer -= Time.deltaTime;
@@ -38,7 +47,7 @@ public class TaskPatrol : Node
             }
             else
             { 
-                //if(System.Array.Exists(_waypoints, x => x == PawnBT._agent.destination))
+                
              
                 Transform wp = _waypoints[_currentWaypointIndex];
                 if (Vector3.Distance(_transform.position, wp.position) < 2f)

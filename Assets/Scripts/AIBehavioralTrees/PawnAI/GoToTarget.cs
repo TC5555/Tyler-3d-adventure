@@ -20,7 +20,11 @@ public class GoToTarget : Node
 
         if (Vector3.Distance(_transform.position, target.position) > 1f)
         {
-            PawnBT._agent.destination = target.position;
+            if (PawnBT._agent.destination != target.position)
+            {
+                Debug.Log("Go");
+                PawnBT._agent.destination = target.position;
+            }
             _transform.LookAt(new Vector3(_transform.position.x, target.position.y, _transform.position.x));
 
         }

@@ -43,6 +43,7 @@ public class Scan : Node
             _transform.GetChild(0).GetComponent<AIWeapon>().fire = false;
             parent.parent.ClearData("target");
             state = NodeState.FAILURE;
+            PawnBT._Patrolling = false;
             return state;
         }
 
