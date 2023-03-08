@@ -71,6 +71,7 @@ public class PlayerScript : MonoBehaviour
 
         WeaponScr = ActiveWeapon.GetComponent<WeaponScript>();
 
+        
 
     }
     // Update is called once per frame
