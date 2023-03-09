@@ -22,6 +22,7 @@ public class Game : MonoBehaviour
         {
             menu.SetActive(true);
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0;
             isPaused = true;
         }
@@ -33,6 +34,7 @@ public class Game : MonoBehaviour
         {
             menu.SetActive(false);
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
             isPaused = false;
         }
