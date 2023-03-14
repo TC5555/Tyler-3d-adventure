@@ -16,6 +16,12 @@ public class Game : MonoBehaviour
 
     private bool isPaused = false;
 
+    public void Start()
+    {
+       
+        Unpause();
+    }
+
     public void Pause()
     {
         if (menu != null)

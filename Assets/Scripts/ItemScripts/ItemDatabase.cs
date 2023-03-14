@@ -25,7 +25,7 @@ public class ItemDatabase : MonoBehaviour
     void BuildDatabase()
     {
         items = new List<Item>() {
-            new Item(0, "health-v3", "A Sword Made with Diamond.",
+            new Item(0, "health", "A Sword Made with Diamond.",
             new Dictionary<string, int>()
             {
               {"Power",15},
