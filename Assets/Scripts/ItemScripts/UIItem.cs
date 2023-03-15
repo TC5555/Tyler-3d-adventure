@@ -9,7 +9,6 @@ public class UIItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     public Item item;
     private Image spriteImage;
     private UIItem selectedItem;
-    private Tooltip tooltip;
 
     private void Awake()
     {
@@ -23,7 +22,7 @@ public class UIItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         if(this.item != null)
         {
             spriteImage.color = Color.white;
-            spriteImage.sprite = this.item.icon;
+            GetComponent<Image>().sprite = this.item.icon;     
         }
         else
         {
@@ -47,12 +46,13 @@ public class UIItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     {
        if(this.item != null)
         {
-            tooltip.GenerateTooltip(this.item);
+            Tooltip.instance.GenerateTooltip(this.item);
         }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.gameObject.SetActive(false);
+        Tooltip.instance.GetComponent<Image>().color = new Color(1,1,1,0);
+        Tooltip.instance.transform.GetChild(0).GetComponent<Text>().color = new Color(0, 0, 0, 0);
     }
 
 }

@@ -26,6 +26,7 @@ public class UIInventory : MonoBehaviour
     public void AddNewItem(Item item)
     {
         UpdateSlot(UIItems.FindIndex(i => i.item == null), item);
+        Debug.Log(item.title);
     }
     public void RemoveItem(Item item)
     {
