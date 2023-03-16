@@ -7,16 +7,14 @@ public class UIInventory : MonoBehaviour
     public List<UIItem> UIItems = new List<UIItem>();
     public GameObject slotPrefab;
     public Transform slotPanel;
-    public int numberOfSlots = 16;
 
     private void Awake()
     {
-       for(int i=0; i< numberOfSlots; i++)
-        {
+    
             GameObject instance = Instantiate(slotPrefab);
             instance.transform.SetParent(slotPanel);
             UIItems.Add(instance.GetComponentInChildren<UIItem>());
-        }
+        
     }
 
     public void UpdateSlot(int slot, Item item)
@@ -25,8 +23,7 @@ public class UIInventory : MonoBehaviour
     }
     public void AddNewItem(Item item)
     {
-        UpdateSlot(UIItems.FindIndex(i => i.item == null), item);
-        Debug.Log(item.title);
+        UIItems.Add(new UIItem(item));
     }
     public void RemoveItem(Item item)
     {

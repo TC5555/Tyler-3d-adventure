@@ -4,16 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,IPointerExitHandler
+public class UIItem : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
 {
     public Item item;
     private Image spriteImage;
-    private UIItem selectedItem;
+ 
+    public UIItem(Item item)
+    {
+        spriteImage = GetComponent<Image>();
 
+        this.item = item;
+        GetComponent<Image>().sprite = this.item.icon;
+    }
+    
     private void Awake()
     {
         spriteImage = GetComponent<Image>();
-        UpdateItem(null);
     }
 
     public void UpdateItem(Item item)
@@ -30,18 +36,6 @@ public class UIItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if(this.item != null)
-        {
-            if(selectedItem != null)
-            {
-                Item clone = new Item(selectedItem.item);
-                selectedItem.UpdateItem(this.item);
-                UpdateItem(clone);
-            }
-        }
-    }
     public void OnPointerEnter(PointerEventData eventData)
     {
        if(this.item != null)
