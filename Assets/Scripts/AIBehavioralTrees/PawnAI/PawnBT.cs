@@ -19,7 +19,7 @@ public class PawnBT : Tree
     private int currentWeapon = 0;
 
     private void Awake()
-    {       
+    {
         _agent = GetComponent<NavMeshAgent>();
     }
 

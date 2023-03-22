@@ -59,8 +59,11 @@ public class TaskPatrol : Node
                 }
                 else
                 {
+                
                     PawnBT._agent.destination = wp.position;
-                    _transform.LookAt(new Vector3(_transform.position.x, wp.position.y, _transform.position.x));
+                    _transform.LookAt(new Vector3(wp.position.x, wp.position.y, wp.position.z));
+              
+                Debug.Log(wp.position.x + " " + _transform.rotation);
                 }
             
         }
