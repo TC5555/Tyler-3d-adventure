@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using BehaviorTree;
-
 using UnityEngine.AI;
 
 public class PawnBT : Tree
@@ -19,7 +18,7 @@ public class PawnBT : Tree
     private int currentWeapon = 0;
 
     private void Awake()
-    {       
+    {
         _agent = GetComponent<NavMeshAgent>();
     }
 

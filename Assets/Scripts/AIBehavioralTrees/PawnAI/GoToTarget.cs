@@ -25,7 +25,7 @@ public class GoToTarget : Node
                 Debug.Log("Go");
                 PawnBT._agent.destination = target.position;
             }
-            _transform.LookAt(new Vector3(_transform.position.x, target.position.y, _transform.position.x));
+            _transform.LookAt(new Vector3(target.position.x, target.position.y, target.position.z));
 
         }
 
