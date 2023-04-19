@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2532,6 +2532,7 @@ MonoBehaviour:
   UIItems: []
   slotPrefab: {fileID: 7723323815941221740, guid: 104177f27b1b54d4aad3bc3aa4309e01, type: 3}
   slotPanel: {fileID: 1545283054}
+  numberOfSlots: 16
 --- !u!114 &1943784876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2801,6 +2802,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1904081604, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
+    - target: {fileID: 1904081604, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'Arm.2.R.001'\n\tFrom animation clip 'PawnWalk'"
+      objectReference: {fileID: 0}
     - target: {fileID: 49023905851733397, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
