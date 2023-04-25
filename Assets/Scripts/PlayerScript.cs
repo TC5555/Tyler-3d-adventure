@@ -44,6 +44,7 @@ public class PlayerScript : MonoBehaviour
     Animator animator;
 
     Vector3 moveDirection;
+    bool changedDirection;
 
     bool lookHeld;
     bool moveHeld;
@@ -167,9 +168,11 @@ public class PlayerScript : MonoBehaviour
 
         ActiveWeapon.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-
-       
+        //transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+        ConstantForce movement = GetComponent<ConstantForce>();
+        rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x,-2,2),);
+        movement.force = (moveDirection * 20);
+        Debug.Log(rigidbody.velocity);
     }
 
     private void OnCollisionStay(Collision collision)
