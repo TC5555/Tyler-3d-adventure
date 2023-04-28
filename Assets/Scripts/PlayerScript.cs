@@ -34,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     float dodgeTimer = 0;
     public float dodgeSpeed;
     public float dodgeCooldown;
+    public float playerSpeed;
 
     GameObject ActiveWeapon;
     WeaponScript WeaponScr;
@@ -122,7 +123,7 @@ public class PlayerScript : MonoBehaviour
                     Debug.Log("dodge");
                     rigidbody.AddForce(moveDirection * dodgeSpeed, ForceMode.Impulse);
                     dodgeTimer = dodgeCooldown;
-                    rigidbody.drag = 0;
+                    rigidbody.drag = 0.95f;
                 }
                 else if (airDodge)
                 {
@@ -130,12 +131,12 @@ public class PlayerScript : MonoBehaviour
                     rigidbody.AddForce(moveDirection * dodgeSpeed * 3/4, ForceMode.Impulse);
                     airDodge = false;
                     dodgeTimer = dodgeCooldown;
-                    rigidbody.drag = 0;
+                    rigidbody.drag = 0.95f;
                 }
             }
             else
             {
-                rigidbody.drag = .1f;
+                rigidbody.drag = .6f;
             }
         }
         dodgeTimer -= Time.deltaTime;
@@ -148,11 +149,6 @@ public class PlayerScript : MonoBehaviour
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
-    }
-
-    void FixedUpdate()
-    {
-        Vector3 position = rigidbody.position;
 
 
         float y = Input.GetAxis("Mouse X") * 4;
@@ -167,12 +163,16 @@ public class PlayerScript : MonoBehaviour
         transform.GetChild(0).eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
         ActiveWeapon.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
+    }
 
-        //transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
-        ConstantForce movement = GetComponent<ConstantForce>();
-        rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x,-2,2),);
-        movement.force = (moveDirection * 20);
-        Debug.Log(rigidbody.velocity);
+    void FixedUpdate()
+    {
+             //transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+        if (grounded && Mathf.Sqrt(rigidbody.velocity.x * rigidbody.velocity.x + rigidbody.velocity.z * rigidbody.velocity.z) < playerSpeed)
+        {
+            rigidbody.velocity = new Vector3(playerSpeed * moveDirection.x, rigidbody.velocity.y, playerSpeed * moveDirection.z);
+        }
+        Debug.Log(Mathf.Sqrt(rigidbody.velocity.x * rigidbody.velocity.x + rigidbody.velocity.z * rigidbody.velocity.z));
     }
 
     private void OnCollisionStay(Collision collision)
