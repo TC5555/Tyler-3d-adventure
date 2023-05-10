@@ -15,7 +15,7 @@ public class PawnBT : Tree
 
     public float deAggroTime, deAggroRange, scanRange;
 
-    private int currentWeapon = 0;
+    private int currentWeapon = 0; 
 
     private void Awake()
     {
