@@ -273,6 +273,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1812441971259367482, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
   m_PrefabInstance: {fileID: 49023907712634717}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &115502463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1327654734367832704, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
+  m_PrefabInstance: {fileID: 49023907712634717}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &115502464
 Animator:
   serializedVersion: 3
@@ -2393,6 +2398,36 @@ Transform:
   m_Father: {fileID: 1232034226}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1772171863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772171864}
+  m_Layer: 0
+  m_Name: bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772171864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772171863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 115502463}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794390645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,10 +2979,6 @@ PrefabInstance:
     - target: {fileID: 3238449249416700693, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3659551409779805835, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939580343991787770, guid: 70f5db3a124a947688b7dde28794aa02, type: 3}
       propertyPath: m_Enabled
