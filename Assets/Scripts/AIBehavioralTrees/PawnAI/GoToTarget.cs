@@ -26,10 +26,11 @@ public class GoToTarget : Node
                 PawnBT._agent.destination = target.position;
             }
             // _transform.LookAt(new Vector3(target.position.x, target.position.y, target.position.z));
-            Debug.Log(target.position);
-            _transform.GetChild(1).GetComponent<PawnModel>().updateHead(target.position);
-            
-           
+            //Debug.Log(target.position);
+            //_transform.GetChild(1).GetComponent<PawnModel>().updateHead(target.position);
+            _transform.GetChild(1).GetComponent<PawnModel>().target = target.position;
+
+
         }
 
         state = NodeState.RUNNING;

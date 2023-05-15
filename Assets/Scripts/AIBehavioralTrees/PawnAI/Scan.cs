@@ -27,7 +27,7 @@ public class Scan : Node
             Collider[] colliders = Physics.OverlapSphere(_transform.position, _scanRange, LayerMask.GetMask("Player"));
             if (colliders.Length > 0)
             {
-                _transform.GetChild(0).GetComponent<AIWeapon>().fire = true;
+                _transform.Find("EnemyWeapon").GetComponent<AIWeapon>().fire = true;
                 parent.parent.SetData("target", colliders[0].transform);
                 state = NodeState.SUCCESS;
                 return state;

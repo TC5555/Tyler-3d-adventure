@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+
 public class PawnModel : MonoBehaviour
 {
+    public Vector3 target;
     private Animator animator;
     GameObject bone;
     // Start is called before the first frame update
@@ -14,12 +17,20 @@ public class PawnModel : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void updateHead(Vector3 target)
+    void OnAnimatorIK()
     {
-        Debug.Log("turned");
-
-        bone.transform.position = transform.Find("neck").position;
-        bone.transform.LookAt(target);
-        animator.SetBoneLocalRotation(HumanBodyBones.Neck, bone.transform.rotation);
+        if (target != null)
+        {
+            /* Debug.Log("turned");
+             Debug.Log(animator.GetBoneTransform(HumanBodyBones.Neck));
+             bone.transform.position = animator.GetBoneTransform(HumanBodyBones.Neck).position;
+             bone.transform.LookAt(target);
+             animator.SetBoneLocalRotation(HumanBodyBones.Neck, bone.transform.rotation);*/
+            animator.SetLookAtWeight(1);
+            animator.SetLookAtPosition(target);
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand,1);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, new Vector3(target.x,target.y + 1.1f,target.z));
+           
+        }
     }
 }
