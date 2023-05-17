@@ -13,6 +13,8 @@ public class PawnBT : Tree
 
     public UnityEngine.GameObject _projectile;
 
+    public UnityEngine.GameObject EquipWeapon;
+
     public float deAggroTime, deAggroRange, scanRange;
 
     private int currentWeapon = 0; 

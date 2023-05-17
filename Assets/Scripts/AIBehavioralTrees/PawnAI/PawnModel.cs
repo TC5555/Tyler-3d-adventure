@@ -26,10 +26,14 @@ public class PawnModel : MonoBehaviour
              bone.transform.position = animator.GetBoneTransform(HumanBodyBones.Neck).position;
              bone.transform.LookAt(target);
              animator.SetBoneLocalRotation(HumanBodyBones.Neck, bone.transform.rotation);*/
+            
             animator.SetLookAtWeight(1);
-            animator.SetLookAtPosition(target);
+            animator.SetLookAtPosition(new Vector3(target.x, target.y + 1f, target.z));
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand,1);
-            animator.SetIKPosition(AvatarIKGoal.RightHand, new Vector3(target.x,target.y + 1.1f,target.z));
+            Vector3 farPoint = new Ray(animator.GetBoneTransform(HumanBodyBones.RightHand).position, target - animator.GetBoneTransform(HumanBodyBones.RightHand).position).GetPoint(5f);
+            Vector3 farPoint2 = new Ray(animator.GetBoneTransform(HumanBodyBones.RightHand).position, target - animator.GetBoneTransform(HumanBodyBones.RightHand).position).GetPoint(Vector3.Distance(transform.position, target));
+            Debug.Log(farPoint + "   " + Vector3.Distance(transform.position,farPoint) + "    " + farPoint2 + "   " + target + "    " + Vector3.Distance(transform.position,target + new Ray(transform.position,target).direction));
+            animator.SetIKPosition(AvatarIKGoal.RightHand, new Vector3(farPoint2.x,farPoint2.y + 1.1f,farPoint2 .z));
            
         }
     }
