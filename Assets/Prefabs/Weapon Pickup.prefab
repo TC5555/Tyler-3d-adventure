@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8569897866608306312}
   - component: {fileID: 7212547587146453168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7191474582219688403}
   - component: {fileID: 4210779843705251391}
-  m_Layer: 6
+  - component: {fileID: 8952354973091748594}
+  m_Layer: 10
   m_Name: Weapon Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +102,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
+--- !u!65 &8952354973091748594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191474582219688400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1001 &7658491228085477417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,6 +122,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8569897866608306312}
     m_Modifications:
+    - target: {fileID: -8700617353114198275, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -152,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -2577548232221058511, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -164,9 +186,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.019
       objectReference: {fileID: 0}
+    - target: {fileID: 65702495048144492, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
       propertyPath: m_Name
       value: EnemyGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b16a43eb494470198cdb964e9590f9, type: 3}

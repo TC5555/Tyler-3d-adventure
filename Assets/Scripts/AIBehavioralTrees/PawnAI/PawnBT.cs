@@ -13,7 +13,7 @@ public class PawnBT : Tree
 
     public UnityEngine.GameObject _projectile;
 
-    public UnityEngine.GameObject EquipWeapon;
+    public UnityEngine.GameObject equipWeapon;
    
     public float deAggroTime, deAggroRange, scanRange;
 
@@ -36,13 +36,13 @@ public class PawnBT : Tree
              
             new Sequence(new List<Node>
             {
-                new Scan(transform,deAggroTime,deAggroRange,scanRange),             
+                new Scan(transform,deAggroTime,deAggroRange,scanRange,equipWeapon),
                 new GoToTarget(transform)
-                
+
             }),
 
-            new TaskPatrol(transform, waypoints),
-        }); ;
+            new TaskPatrol(transform, waypoints)
+        });
 
         return root;
 
