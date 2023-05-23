@@ -28,7 +28,7 @@ public class GoToTarget : Node
             // _transform.LookAt(new Vector3(target.position.x, target.position.y, target.position.z));
             //Debug.Log(target.position);
             //_transform.GetChild(1).GetComponent<PawnModel>().updateHead(target.position);
-            _transform.GetChild(1).GetComponent<PawnModel>().target = target.position;
+            _transform.GetChild(0).GetComponent<PawnModel>().target = target.position;
 
 
         }

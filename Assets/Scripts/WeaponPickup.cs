@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    private void Update()
-    {
-        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z), Space.Self);
-    }
-    void OnTriggerEnter(Collision collision)
+  
+    void OnColliderEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -18,7 +15,8 @@ public class WeaponPickup : MonoBehaviour
         {
             transform.GetChild(0).tag = "Enemy";
             transform.parent.GetComponent<PawnBT>().equipWeapon = transform.GetChild(0).gameObject;
-            transform.GetChild(0).parent = collision.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0);            
+            transform.GetChild(0).parent = collision.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0);
+            Destroy(gameObject);
         }
     }
 }
