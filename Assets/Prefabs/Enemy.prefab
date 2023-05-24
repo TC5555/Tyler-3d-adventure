@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _projectile: {fileID: 2751710748530718744, guid: 1341bfa84a910420cafc81b97e069720, type: 3}
+  equipWeapon: {fileID: 0}
   deAggroTime: 5
   deAggroRange: 100
   scanRange: 10
@@ -240,6 +241,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 953491112105584341, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203231534981345228, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203231534981345228, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203231534981345228, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
