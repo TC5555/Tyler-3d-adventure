@@ -11,11 +11,13 @@ public class PawnBT : Tree
 
     public static bool _Patrolling = true;
 
+    public int health;
+
     public UnityEngine.GameObject _projectile;
 
     public float deAggroTime, deAggroRange, scanRange;
 
-    private int currentWeapon = 0; 
+    private int currentWeapon = 0;
 
     private void Awake()
     {

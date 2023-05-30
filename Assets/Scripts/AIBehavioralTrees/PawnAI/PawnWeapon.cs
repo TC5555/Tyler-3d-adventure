@@ -8,6 +8,7 @@ public class PawnWeapon : AIWeapon
     // Update is called once per frame
     public override void Launch()
     {
+        transform.parent.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Play();
         for (int i = shootMulti; i > 0; i--)
         {
 

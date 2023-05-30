@@ -4988,10 +4988,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b287c091bc164e429368ab3536666ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: -1
+  damageAmount: -10
   force: 1500
-  distance: 999
-  contactDamage: -3
+  distance: 100
+  contactDamage: -5
   radius: 5
   Knockback: 3000
   vertKnockback: 0.4

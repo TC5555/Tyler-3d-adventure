@@ -20,7 +20,6 @@ public class Scan : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("Scan");
         Transform t = (Transform)GetData("target");
         if (t == null)
         {

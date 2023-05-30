@@ -17,7 +17,7 @@ public abstract class ExplosiveProjectile : Projectile
     {
         if (!Mathf.Approximately(Input.GetAxis("Aim"), 0.0f))
         {
-            if (!exploded && GameObject.FindGameObjectsWithTag("PlayerProjectile").Length == 1) 
+            if (!exploded) 
             {
                 StartCoroutine(Explode());
             }
@@ -34,7 +34,7 @@ public abstract class ExplosiveProjectile : Projectile
         {
             if (hit.CompareTag("Enemy"))
             {
-                hit.gameObject.GetComponent<EnemyScript>().ChangeHealth(damageAmount * (falloff + (1f-falloff) * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius));
+                hit.gameObject.GetComponent<HealthManager>().ChangeHealth((int)(damageAmount * (falloff + (1f-falloff) * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius)));
                 //blast damage calculation is blastdamage - MaxFallout * (radius - distance)/radius.
                 //4 meters away from a 5 meter explosion is 4/5ths damage. 
                 Debug.Log((falloff + (1f - falloff) * (radius - (hit.ClosestPoint(rigidbody.position) - rigidbody.position).magnitude) / radius));
