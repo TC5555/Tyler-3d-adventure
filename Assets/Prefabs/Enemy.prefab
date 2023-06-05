@@ -5140,6 +5140,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.00000014528632
       objectReference: {fileID: 0}
+    - target: {fileID: -4526768273244625892, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10364410b8405433b8dcc63311bb9369, type: 2}
+    - target: {fileID: -3722405182657794361, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f125357d2681b4a00bc2fe5519cc13e9, type: 2}
     - target: {fileID: 919132149155446097, guid: 84016cfae4054f64ab0b35671331cfad, type: 3}
       propertyPath: m_Name
       value: Finished Man
