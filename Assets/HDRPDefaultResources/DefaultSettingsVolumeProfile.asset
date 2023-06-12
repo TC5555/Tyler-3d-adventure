@@ -84,7 +84,7 @@ MonoBehaviour:
     m_Value: 255
   reflectionLightingMultiplier:
     m_OverrideState: 1
-    m_Value: 0.05
+    m_Value: 0.001
     min: 0
   reflectionLightingLayers:
     m_OverrideState: 0
