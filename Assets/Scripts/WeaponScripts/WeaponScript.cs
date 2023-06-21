@@ -44,6 +44,7 @@ public abstract class WeaponScript : MonoBehaviour
                 {
                     ammoCount--;
                     Debug.Log(ammoCount);
+                    transform.parent.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Play();
                     Launch();
 
                     yield return new WaitForSeconds(1/(roundsPerMinute / 60));

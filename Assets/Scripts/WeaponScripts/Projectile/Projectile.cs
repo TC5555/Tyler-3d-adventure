@@ -20,10 +20,10 @@ public abstract class Projectile : MonoBehaviour
 
     public void Launch(Vector3 direction, Vector3 origin)
     {
-        this.origin = origin;
-   
-        rigidbody.AddForce(direction * force);
+            this.origin = origin;
+            rigidbody.AddForce(direction * force);
     }
+   
 
     void Update()
     {

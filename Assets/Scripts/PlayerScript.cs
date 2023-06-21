@@ -162,6 +162,7 @@ public class PlayerScript : MonoBehaviour
 
         transform.GetChild(0).eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
         
+        transform.GetChild(1).eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
 
         ActiveWeapon.transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
     }
